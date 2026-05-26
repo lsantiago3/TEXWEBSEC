@@ -1,0 +1,24 @@
+name: Nightly Memory-Bank Cleanup
+
+on:
+  schedule:
+      - cron: '0 2 * * *'
+        workflow_dispatch:
+            inputs:
+                  dry_run:
+                          description: 'Preview changes without committing (true/false)'
+                                  required: false
+                                          default: 'false'
+
+                                          permissions:
+                                            contents: write
+
+                                            jobs:
+                                              cleanup:
+                                                  name: Detect & Remove Nested / Duplicate Folders
+                                                      runs-on: ubuntu-latest
+                                                          timeout-minutes: 15
+
+                                                              steps:
+                                                                    - name: Checkout repository
+                                                                            uses: actions/checkout@v4
