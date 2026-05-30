@@ -10,3 +10,7 @@ api_router.include_router(user_router, prefix="/user", tags=["User"])
 api_router.include_router(business_router, prefix="/business", tags=["Business"])
 api_router.include_router(scan_router, prefix="/scan", tags=["Scan"])
 api_router.include_router(report_router, prefix="/report", tags=["Report"])
+from .files import router as files_router
+api_router.include_router(files_router, prefix="/files", tags=["Files"])
+
+
